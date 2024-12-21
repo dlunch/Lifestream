@@ -182,7 +182,7 @@ internal static unsafe class Utils
             ImGui.BeginTooltip();
             ImGuiEx.Text($"Point: {point:F2}\nLeft-click to finish");
             ImGui.EndTooltip();
-            if(IsKeyPressed(Keys.LButton))
+            if(IsKeyPressed((int)Keys.LButton))
             {
                 isInWorldToScreen = false;
             }
@@ -212,7 +212,7 @@ internal static unsafe class Utils
             ImGui.BeginTooltip();
             ImGuiEx.Text($"Point: {point:F2}\nLeft-click to finish");
             ImGui.EndTooltip();
-            if(IsKeyPressed(Keys.LButton))
+            if(IsKeyPressed((int)Keys.LButton))
             {
                 isInWorldToScreen = false;
             }
