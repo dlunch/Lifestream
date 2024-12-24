@@ -108,6 +108,15 @@ internal class DataStore
 
     internal void BuildWorlds(uint dc)
     {
+        // korea
+        if (Svc.ClientState.LocalPlayer.CurrentWorld.GameData.Region == 3)
+        {
+            Worlds = ["카벙클", "초코보", "모그리", "톤베리", "펜리르"];
+            DCWorlds = [];
+
+            return;
+        }
+
         Worlds = [.. Svc.Data.GetExcelSheet<World>().Where(x => x.DataCenter.Value.RowId == dc && x.IsPublic()).Select(x => x.Name.ToString()).Order()];
         PluginLog.Debug($"Built worlds: {Worlds.Print()}");
         DCWorlds = Svc.Data.GetExcelSheet<World>().Where(x => x.DataCenter.Value.RowId != dc && x.IsPublic() && (x.DataCenter.Value.Region == Player.Object.HomeWorld.GameData.DataCenter.Value.Region || x.DataCenter.Value.Region == 4)).Select(x => x.Name.ToString()).ToArray();
